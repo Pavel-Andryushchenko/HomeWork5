@@ -23,6 +23,6 @@ public class Student extends User {
                 ", firstName=" + super.getFirstName() +
                 ", secondName=" + super.getSecondName() +
                 ", lastName=" + super.getLastName() +
-                '}';
+                "}";
     }
 }

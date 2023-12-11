@@ -2,7 +2,7 @@ package conroller;
 
 import model.Student;
 import model.StudyGroup;
-import model.StudyGroupService;
+import service.StudyGroupService;
 import model.User;
 import service.DataService;
 import service.Type;
@@ -25,11 +25,23 @@ public class Controller {
             studentView.printOnConsole((Student) user);
         }
     }
-    public StudyGroup createStudyGroup(){
-        return studyGroupService.createStudyGroup(dataService.getAllConcUser(Type.STUDENT), dataService.getFirstTeacher());
+    public void createStudyGroup(){
+       studyGroupService.createStudyGroup(dataService.getAllConcUser(Type.STUDENT), dataService.getFirstTeacher());
     }
 
     public void getStudyGroup(){
-        studyGroupView.printOnConsole(createStudyGroup());
+
+        for (StudyGroup<User> studyGroup: studyGroupService.getStudyGroupList()){
+            studyGroupView.printOnConsole(studyGroup);
+        }
+
+    }
+
+    public void getStudyGroupAsListStrings(){
+
+        for (StudyGroup<User> studyGroup: studyGroupService.getStudyGroupList()){
+            studyGroupView.printAsListString(studyGroup);
+        }
+
     }
 }
